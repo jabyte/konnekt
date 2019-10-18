@@ -1,0 +1,34 @@
+{
+  "name": "konnekt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "set NODE_ENV=production && node index.js",
+    "dev": "set NODE_ENV=development && nodemon index.js",
+    "test": "set NODE_ENV=test && jest --watchAll --verbose"
+  },
+  "keywords": [
+    "family",
+    "connect",
+    "social",
+    "tree"
+  ],
+  "author": "Jabir S. Minjibir <jabir.minjibir@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/joi": "^16.1.7",
+    "config": "^3.2.3",
+    "express": "^4.17.1",
+    "lodash": "^4.17.15",
+    "mongoose": "^5.7.5",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "jest": "^24.9.0",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.19.4",
+    "supertest": "^4.0.2"
+  }
+}

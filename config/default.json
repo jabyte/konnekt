@@ -1,0 +1,5 @@
+{
+  "db": {
+    "url": "mongodb+srv://jminjibir:PassWord@konnekt-4sr4d.gcp.mongodb.net/test?retryWrites=true&w=majority"
+  }
+}
