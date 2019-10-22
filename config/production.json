@@ -1,6 +1,7 @@
 {
    "db": {
      "url": "mongodb+srv://jminjibir:PassWord@konnekt-4sr4d.gcp.mongodb.net/testproductiondb?retryWrites=true&w=majority"
-   }
+   },
+   "scope": "Production DB"
  }
  

@@ -22,9 +22,9 @@ mongoose
       useNewUrlParser: true,
       useUnifiedTopology: true
    })
-   .then(console.info('Successfully Connected to database'))
+   .then(console.info(`Connected to ${config.get('scope')}`))
    .catch(err => {
-      console.error('Unable to establish connection to database:', err.message)
+      console.error(`Unable to establish connection to ${config.get('scope')}`, err.message)
    });
 
 // Application routes
@@ -46,20 +46,28 @@ app.get('/api/members', async (req, res) => {
 
 app.get('/api/members/:id', async (req, res) => {
    try {
-      const member = await Member.findById(req.params.id);
+      if (mongoose.Types.ObjectId.isValid(req.params.id)) {
+         const member = await Member.findById(req.params.id);
 
-      if (member) {
+         if (member) {
+            res
+               .status(200)
+               .json(member);
+            return
+         }
+
          res
-            .status(200)
-            .json(member);
+            .status(404)
+            .json({
+               message: 'Member not found'
+            });
+      } else {
+         res
+            .status(404)
+            .json({
+               error: 'Invalid member ID'
+            })
       }
-
-      res
-         .status(404)
-         .json({
-            message: 'Member not found.'
-         });
-
    } catch (err) {
       res
          .status(500)
@@ -81,6 +89,8 @@ app.post('/api/members', async (req, res) => {
          .json({
             error: error.message
          });
+
+      return
    }
 
    try {
